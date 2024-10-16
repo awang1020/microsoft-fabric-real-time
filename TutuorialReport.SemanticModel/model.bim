@@ -1,0 +1,191 @@
+{
+  "compatibilityLevel": 1564,
+  "model": {
+    "annotations": [
+      {
+        "name": "ModelPopulated",
+        "value": "value"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Kusto Query Result\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.130.930.0 (24.06)"
+      }
+    ],
+    "culture": "fr",
+    "cultures": [
+      {
+        "name": "fr",
+        "linguisticMetadata": {
+          "content": {
+            "Entities": {
+              "customer_churn_test_predictions.churn_rate": {
+                "Binding": {
+                  "ConceptualEntity": "customer_churn_test_predictions",
+                  "ConceptualProperty": "Churn rate"
+                },
+                "State": "Generated"
+              },
+              "customer_churn_test_predictions.customers": {
+                "Binding": {
+                  "ConceptualEntity": "customer_churn_test_predictions",
+                  "ConceptualProperty": "Customers"
+                },
+                "State": "Generated"
+              }
+            },
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "fr",
+    "tables": [
+      {
+        "name": "Kusto Query Result",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "BikepointID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "133871cc-7526-414a-a6e3-a8f6902ddce9",
+            "sourceColumn": "BikepointID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Horodateur",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "lineageTag": "c6d14af5-d321-454a-8a0d-2315d1e165a3",
+            "sourceColumn": "Horodateur",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "No_Bikes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "bea69ce6-36dd-46d0-872a-e0af49bff877",
+            "sourceColumn": "No_Bikes",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "No_Empty_Docks",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "34200e61-12d6-47e8-b8d2-7068df79799b",
+            "sourceColumn": "No_Empty_Docks",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Neighbourhood",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5c14b052-6252-47f4-bf36-74ed1779ed29",
+            "sourceColumn": "Neighbourhood",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Lat",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "c7a291da-cd0c-406d-8a7f-2a2fee3cdc0a",
+            "sourceColumn": "Lat",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Lon",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "60a7edd2-c3b0-4288-a0a0-97ac68088d82",
+            "sourceColumn": "Lon",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "04837ecf-1ca8-46b3-bde5-b911a1eb07bc",
+        "partitions": [
+          {
+            "name": "Kusto Query Result",
+            "mode": "directQuery",
+            "source": {
+              "expression": [
+                "let",
+                "Source = AzureDataExplorer.Contents(\"https://trd-t57r917du6mjk5ncq4.z4.kusto.fabric.microsoft.com\", \"Tutoriel\", \"",
+                "TutorialTable",
+                "| summarize arg_max(Horodateur, No_Bikes,  No_Empty_Docks, Neighbourhood, Lat=todouble(Latitude), Lon=todouble(Longitude)) by BikepointID\", [])",
+                "in",
+                "Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
